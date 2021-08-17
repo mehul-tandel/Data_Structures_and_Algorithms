@@ -26,9 +26,42 @@ def sumInRanges(arr, n, queries, q):
         sums.append(sum)
     return sums
 
+
+
+#Approach2
+#this function returns the sum of all the elements of the infinite-array from start to index x
+def sumArray(arr, x, n):
+        
+    m = 10**9 + 7
+    sum = 0
+    for i in range(x):
+        sum += arr[i%n]
+        sum %= m
+        
+    return sum
+            
+            
+            
+def sumInRanges2(arr, n, queries, q):
+    
+    sums = []
+    m = 10**9 + 7
+    for query in queries:
+        l = query[0]
+        r = query[1]
+        
+        lsum = sumArray(arr,l-1,n)%m
+        rsum = sumArray(arr,r,n)%m
+        
+        sums.append(rsum-lsum)
+        
+    return sums
+
+
 #Test code
 N = 2
 A = [11,11]
 lr = [[1,2],[1,3],[2,3],[2,4],[1,10]]
 Q = 5
 print(sumInRanges(A, N, lr, Q))
+
