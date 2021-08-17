@@ -1,4 +1,7 @@
-
+'''
+Problem Statement
+You have been given an integer array/list (ARR) of size N. You have to return an array/list PRODUCT such that PRODUCT[i] is equal to the product of all the elements of ARR except ARR[i]
+'''
 
 def productOfArrayExceptSelf(arr,n):
 
