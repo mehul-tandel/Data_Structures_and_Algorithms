@@ -1,3 +1,5 @@
+# Kadane's algorithm
+
 def maxSubarraySum(arr, n) :
 
     maxSum = 0
