@@ -18,3 +18,9 @@ def seiveOfEratothenes(n):
 
 # test code
 # print(seiveOfEratothenes(20))
+
+def gcd(a,b):
+    
+    if b == 0:
+        return a
+    gcd(b, a%b)
