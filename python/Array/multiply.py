@@ -1,4 +1,4 @@
-#function to multiply integers given in the form of a list.
+ #function to multiply integers given in the form of a list.
 
 def multiply(a,b):
     
