@@ -45,3 +45,36 @@ def trapRainwater2(arr):
         accumulator += (min(left[i],right[i]) - arr[i])
 
     return accumulator
+
+# Another efficient approach is to subtract height with larger previous elevation assuming there is a higher elevation coming towards right.
+
+def trapRainwater3(arr):
+
+    n = len(arr)
+    temp = 0 # to store water from prev to upcoming prev so that if there is no upcomig pre(no higher elevation to right), temp can be subtracted from water.
+    water = 0
+
+    prev = arr[0]
+    prev_idx = 0
+
+    for i in range(1,n):
+        if arr[i] >= prev :
+            prev = arr[i]
+            prev_idx = i
+            temp = 0
+        else:
+            water += prev - arr[i]
+            temp += prev - arr[i]
+
+    if prev_idx < n-1 :
+        water -= temp
+        prev = arr[n-1]
+        
+        # iterate back from end to highest(prev)
+        for i in range(n-1,prev_idx-1,-1):
+            if arr[i] >= prev:
+                prev = arr[i]
+            else:
+                water += prev - arr[i]
+
+    return water

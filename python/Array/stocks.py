@@ -12,6 +12,13 @@ def buy_sell_stock_once(prices):
 
     return max_profit  
 
+
+# Buy and sell stocks atmost twice for maximum profit
+
+def buy_sell_stocks_twice(prices):
+    
+
+
 # Buy and sell stocks for maximum profit
 
 def buy_sell_stocks(prices):
