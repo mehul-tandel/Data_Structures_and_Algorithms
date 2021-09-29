@@ -19,7 +19,7 @@ def trapRainwater(arr):
         for j in range(i+1,n):
             right = max(right, arr[j])
 
-        accumulator += min(left, right)
+        accumulator += (min(left, right) - arr[i])
 
     return accumulator
 
@@ -51,7 +51,7 @@ def trapRainwater2(arr):
 def trapRainwater3(arr):
 
     n = len(arr)
-    temp = 0 # to store water from prev to upcoming prev so that if there is no upcomig pre(no higher elevation to right), temp can be subtracted from water.
+    temp = 0 # to store water from prev to upcoming prev so that if there is no upcomig prev(no higher elevation to right), temp can be subtracted from water.
     water = 0
 
     prev = arr[0]
