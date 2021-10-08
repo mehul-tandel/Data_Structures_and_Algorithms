@@ -46,7 +46,6 @@ def merge(arr,L,R,l,mid,r):
     
     return inv
 
-
 # test code
 
 a = [4,2,1,3]
