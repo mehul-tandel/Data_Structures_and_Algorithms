@@ -1,3 +1,5 @@
+// Not solved yet
+
 package com.mehul;
 
 import java.util.ArrayList;
@@ -25,8 +27,8 @@ public class KnightTour {
         board[r][c] = false;
         if(jump == n*n-1){
             ArrayList<Integer> destination = new ArrayList<>();
-            destination.set(0,r);
-            destination.set(1,c);
+            destination.add(0,r);
+            destination.add(1,c);
             paths.add(jump,destination);
             return 1;
         }
@@ -47,56 +49,56 @@ public class KnightTour {
         if(r+2 < board.length){
             if(c+1 < board.length){
                 ArrayList<Integer> square = new ArrayList<>();
-                square.set(0,r+2);
-                square.set(1,c+1);
+                square.add(0,r+2);
+                square.add(1,c+1);
                 jumps.add(square);
             }
             if(c-1 >= 0){
                 ArrayList<Integer> square = new ArrayList<>();
-                square.set(0,r+2);
-                square.set(1,c-1);
+                square.add(0,r+2);
+                square.add(1,c-1);
                 jumps.add(square);
             }
         }
         if(r-2 >= 0){
             if(c+1 < board.length){
                 ArrayList<Integer> square = new ArrayList<>();
-                square.set(0,r-2);
-                square.set(1,c+1);
+                square.add(0,r-2);
+                square.add(1,c+1);
                 jumps.add(square);
             }
             if(c-1 >= 0){
                 ArrayList<Integer> square = new ArrayList<>();
-                square.set(0,r-2);
-                square.set(1,c-1);
+                square.add(0,r-2);
+                square.add(1,c-1);
                 jumps.add(square);
             }
         }
         if(c+2 < board.length){
             if(r+1 < board.length){
                 ArrayList<Integer> square = new ArrayList<>();
-                square.set(0,r+1);
-                square.set(1,c+2);
+                square.add(0,r+1);
+                square.add(1,c+2);
                 jumps.add(square);
             }
             if(r-1 >= 0){
                 ArrayList<Integer> square = new ArrayList<>();
-                square.set(0,r-2);
-                square.set(1,c+2);
+                square.add(0,r-2);
+                square.add(1,c+2);
                 jumps.add(square);
             }
         }
         if(c-2 >= 0){
             if(r+1 < board.length){
                 ArrayList<Integer> square = new ArrayList<>();
-                square.set(0,r+1);
-                square.set(1,c-2);
+                square.add(0,r+1);
+                square.add(1,c-2);
                 jumps.add(square);
             }
             if(r-1 >= 0){
                 ArrayList<Integer> square = new ArrayList<>();
-                square.set(0,r-1);
-                square.set(1,c-2);
+                square.add(0,r-1);
+                square.add(1,c-2);
                 jumps.add(square);
             }
         }
