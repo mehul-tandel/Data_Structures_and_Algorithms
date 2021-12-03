@@ -15,12 +15,15 @@ class Node():
 class LinkedList():
     def __init__(self, value=None):
         self.head_node = Node(value)
+    
     def get_head_node(self):
         return self.head_node
+    
     def insert_new_head_node(self, new_value):
         new_node = Node(new_value)
         new_node.set_next_node(self.head_node)
         self.head_node = new_node
+    
     def insert_new_node(self, new_value):
         new_node = Node(new_value)
         current_node = self.head_node
@@ -30,13 +33,26 @@ class LinkedList():
             current_node.set_next_node(new_node)
         else:
             self.head_node = new_node
+
+    def insertAt(self,new_val,index):
+        new_node = Node(new_val)
+        temp = self.get_head_node()
+        for i in range(index-1):
+            temp = temp.get_next_node()
+        temp2 = temp.get_next_node()
+        temp.set_next_node(new_node)
+        new_node.set_next_node(temp2)
+        
+    
     def stringify_list(self):
         string_list = ""
         current_node = self.get_head_node()
         while current_node != None:
-            string_list += str(current_node.get_value()) + " "
+            string_list += str(current_node.get_value()) + "->"
             current_node = current_node.get_next_node()
+        string_list += "end"
         return string_list
+    
     def remove_node(self, value_to_remove):
         current_node = self.get_head_node()
         if current_node.get_value() == value_to_remove:
@@ -67,20 +83,23 @@ def get_middle_node(linked_list):
             slow = slow.get_next_node()
     return slow
 
-#Test code
-#Creating Linked list and adding nodes
-my_ll = LinkedList(5)
-my_ll.insert_new_head_node(10)
-my_ll.insert_new_node(4)
-my_ll.insert_new_node(3)
-my_ll.insert_new_node(555)
-my_ll.insert_new_node(359)
-my_ll.insert_new_head_node(15)
-my_ll.insert_new_head_node(16)
-print(my_ll.stringify_list())
+# #Test code
+# #Creating Linked list and adding nodes
+# my_ll = LinkedList(5)
+# my_ll.insert_new_head_node(10)
+# my_ll.insert_new_node(4)
+# my_ll.insert_new_node(3)
+# my_ll.insert_new_node(555)
+# my_ll.insert_new_node(359)
+# my_ll.insert_new_head_node(15)
+# my_ll.insert_new_head_node(16)
+# print(my_ll.stringify_list())
 
-#Getting nth last node
-print(get_nth_node(my_ll, 3).get_value())
+# # #Getting nth last node
+# # print(get_nth_node(my_ll, 3).get_value())
 
-#Getting middle node
-print(get_middle_node(my_ll).get_value())
+# # #Getting middle node
+# # print(get_middle_node(my_ll).get_value())
+
+# my_ll.insertAt(12,2)
+# print(my_ll.stringify_list())
