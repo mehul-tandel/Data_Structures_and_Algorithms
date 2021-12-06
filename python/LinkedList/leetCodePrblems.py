@@ -81,6 +81,28 @@ def mergeTwoLists(self, list1: Optional[ListNode], list2: Optional[ListNode]) ->
 
     return head.next
 
-# Function to reverse a linled list
-def reverseList(head):
-    
+# Function to reverse a linked list
+# Recursive funtion
+def reverseRecur(head): 
+    return reverseList(head,None)
+
+def reverseList(head,newHead): 
+    if head == None :
+        return newHead
+    next = head.next
+    head.next = newHead
+    return reverseList(next,head)
+
+# Iteratively reverse linked list
+def reverse(head):
+    prev = None
+    curr = head
+
+    while curr != None :
+        next = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next
+
+    return prev
+        
