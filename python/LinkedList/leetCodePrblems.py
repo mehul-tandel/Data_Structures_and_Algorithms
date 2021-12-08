@@ -172,36 +172,97 @@ def isPalindrome(head: Optional[ListNode]) -> bool:
     return flag
 
 
-# Reorder list (not solved yet)
+# Reorder list 
 def reorderList(head: Optional[ListNode]) -> None:
     mid = middle(head)
     midNext = mid.next
     midNext = reverse(midNext)
     mid.next = None
-    head2 = mid.next
+    head2 = midNext
 
     while head2 != None :
-        temp = head.next
+        newHead = head.next
         head.next = head2
-        head = temp
-        head2 = head2.next
+        newHead2 = head2.next
+        head2.next = newHead
+        head = newHead
+        head2 = newHead2
+
+
+# Reverse nodes in k groups
+def reverseKGroup(head: Optional[ListNode], k: int) -> Optional[ListNode]:
+    start = head
+    end = head
+    flag = True
+    oldStart = None
+    while flag :
+        for i in range(k-1):
+            end = end.next
+            if end == None:
+                flag = False
+                break
+        if flag == False :
+            break
+        newStart = end.next
+        # reverse start to end
+        curr = start
+        prev = newStart
+        while curr != newStart :
+            next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        if oldStart != None:
+            oldStart.next = prev
+        else: # new head
+            head = prev
+        oldStart = start
+        if newStart == None :
+            break
+        start = newStart
+        end = newStart
+    return head
+
+
+# Rotate List
+def rotateRight(head: Optional[ListNode], k: int) -> Optional[ListNode]:
+    if head == None:
+        return head
+    node = head
+    length = 0
+    while node != None :
+        if node.next == None:
+            last = node
+        node = node.next
+        length += 1
+    k = k%length
+    if k == 0 :
+        return head
+    newEnd = length - k
+    newLast = head
+    for i in range(newEnd-1):
+        newLast = newLast.next
+    last.next = head
+    newHead = newLast.next
+    newLast.next = None
+    return newHead
 
 
 
+# #test code
+# a = ListNode(1)
+# a.next = ListNode(2)
+# b = a.next
+# c = b.next = ListNode(3)
+# d = c.next = ListNode(4)
+# e = d.next = ListNode(5)
 
-#test code
-a = ListNode(1)
-a.next = ListNode(2)
-b = a.next
-c = b.next = ListNode(3)
-d = c.next = ListNode(4)
+# def printList(head):
+#     while head != None :
+#         print(head.val)
+#         head = head.next
 
-def printList(head):
-    while head != None :
-        print(head.val)
-        head = head.next
-
-printList(a)
-reorderList(a)
-print("***")
-printList(a)
+# printList(a)
+# r = reverseKGroup(a,2)
+# print("***")
+# printList(r)
