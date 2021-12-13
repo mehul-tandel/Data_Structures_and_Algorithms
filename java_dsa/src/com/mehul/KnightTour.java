@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class KnightTour {
     public static void main(String[] args) {
-        boolean[][] board = createBoard(4);
+        boolean[][] board = createBoard(8);
         int paths = tour(4,board,0,0,0,new ArrayList<ArrayList<Integer>>());
         System.out.println(paths);
     }

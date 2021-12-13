@@ -247,6 +247,22 @@ def rotateRight(head: Optional[ListNode], k: int) -> Optional[ListNode]:
     newLast.next = None
     return newHead
 
+# Remove cycle
+def removeCycle(head):
+    length = getLength(head)
+    if length == 0 :
+        return
+    f = head
+    s = head
+    while length > 0 :
+        f = f.next
+        length -= 1
+    while f.next != s.next :
+        f = f.next
+        s = s.next
+    f.next = None
+    return
+
 
 
 # #test code
@@ -256,12 +272,13 @@ def rotateRight(head: Optional[ListNode], k: int) -> Optional[ListNode]:
 # c = b.next = ListNode(3)
 # d = c.next = ListNode(4)
 # e = d.next = ListNode(5)
+# e.next = b
 
 # def printList(head):
 #     while head != None :
 #         print(head.val)
 #         head = head.next
-
+# removeCycle(a)
 # printList(a)
 # r = reverseKGroup(a,2)
 # print("***")
