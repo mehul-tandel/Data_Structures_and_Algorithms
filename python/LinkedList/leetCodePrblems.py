@@ -264,6 +264,42 @@ def removeCycle(head):
     return
 
 
+# Merge Sort on LL
+def mergeSort(head):
+    fast = slow = head
+    temp = head
+    while fast != None and fast.next != None :
+        fast = fast.next.next
+        temp = slow
+        slow = slow.next
+    temp.next = None
+    left = mergeSort(head)
+    right = mergeSort(slow)
+    return merge(left,right)
+
+def merge(left,right):
+    start = ListNode(0)
+    head = start
+    while left != None and right != None :
+        if left.data < right.data :
+            start.next = left
+            left = left.next
+            start = start.next
+        else:
+            start.next = right
+            right = right.next
+            start = start.next
+    while left != None :
+        start.next = left
+        left = left.next
+        start = start.next
+    while right != None :
+        start.next = right
+        right = right.next
+        start = start.next
+    return head.next
+
+
 
 # #test code
 # a = ListNode(1)
