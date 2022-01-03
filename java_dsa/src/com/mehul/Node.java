@@ -1,9 +1,11 @@
 package com.mehul;
 
+import java.util.ArrayDeque;
+
 class Node {
     int data;
     Node next;
-    Node child;
+    Node down;
 
     Node(int data){
         this.data = data;
@@ -16,9 +18,9 @@ class MultilevelLl {
             return;
         }
         System.out.print(' ' + head.data + ' ');
-        if (head.child != null){
+        if (head.down != null){
             System.out.print('[');
-            printOriginalList(head.child);
+            printOriginalList(head.down);
             System.out.print(']');
         }
         printOriginalList(head.next);
@@ -36,6 +38,22 @@ class MultilevelLl {
         if(head == null){
             return null;
         }
-
+        Node curr = head;
+        Node tail = head;
+        ArrayDeque<Node> queue = new ArrayDeque<>();
+        while (tail.next != null || !queue.isEmpty()){
+            if(tail.next == null){
+                tail.next = queue.poll();
+            }
+            while(tail.next != null){
+                tail = tail.next;
+            }
+            while(curr.down == null){
+                curr = curr.next;
+            }
+            queue.add(curr.down);
+            curr = curr.next;
+        }
+        return head;
     }
 }
