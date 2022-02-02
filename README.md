@@ -1,2 +1,3 @@
 # Data_Structures_and_Algorithms
-Coding solutions to data structures and algorithm problems as I learn dsa.
+
+Coding solutions to dsa problems as I learn.
